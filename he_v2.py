@@ -165,13 +165,17 @@ class MyFrame(Frame):
 
         elif flag_distance and flag_pace: #根据距离和配速计算时间和圈速
             time_tmp = time_pace*float(distance)
+            print(time_tmp)
             hour_tmp = int(time_tmp/3600)
             minute_tmp = int((time_tmp-hour_tmp*3600)/60)
             second_tmp = int((time_tmp-hour_tmp*3600-minute_tmp*60)%60)
+            minisecond = int((time_tmp - hour_tmp*3600 - minute_tmp*60 - second_tmp)*100) #白分秒
+            # print(time_tmp - hour_tmp*3600 - minute_tmp*60 - second_tmp, minisecond)
             lap_time = int((time_pace /2.5)*100)/100
             self.__TextBox01.AppendText(str(hour_tmp))
             self.__TextBox02.AppendText(str(minute_tmp))
             self.__TextBox03.AppendText(str(second_tmp))
+            self.__TextBox04.AppendText(str(minisecond))
             self.__TextBox5.AppendText(str(lap_time)) #填充圈速
 
         elif flag_time and flag_lap: #根据时间和圈速计算距离和配速
@@ -189,12 +193,14 @@ class MyFrame(Frame):
             hour_tmp = int(time_tmp/3600)
             minute_tmp = int((time_tmp-hour_tmp*3600)/60)
             second_tmp = int((time_tmp-hour_tmp*3600-minute_tmp*60)%60)
+            minisecond = int((time_tmp - hour_tmp*3600 - minute_tmp*60 - second_tmp)*100) #白分秒
             pace_m = int(pace_km/60)
             pace_s = int(pace_km%60)
             pace_mi = int((pace_km - pace_m*60 - pace_s)*100)
             self.__TextBox01.AppendText(str(hour_tmp))
             self.__TextBox02.AppendText(str(minute_tmp))
             self.__TextBox03.AppendText(str(second_tmp))
+            self.__TextBox04.AppendText(str(minisecond))
             self.__TextBox2.AppendText(str(pace_m))
             self.__TextBox3.AppendText(str(pace_s))
             self.__TextBox4.AppendText(str(pace_mi))
@@ -203,6 +209,7 @@ class MyFrame(Frame):
         self.__TextBox01.Clear()    
         self.__TextBox02.Clear()
         self.__TextBox03.Clear()
+        self.__TextBox04.Clear()
         self.__TextBox1.Clear()
         self.__TextBox2.Clear()    
         self.__TextBox3.Clear()
