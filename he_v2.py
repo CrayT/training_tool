@@ -111,11 +111,11 @@ class MyFrame(Frame):
         #判断时间 时分秒 输入正确与否，不输入默认为0
         try:
             time_total = int(hour)*3600 + int(minute)*60 + int(second) + int(minisecond)/100
-            print("总时间:%s"%(time_total))
+            # print("总时间:%s"%(time_total))
             time_pace = int(pace_minute)*60 + int(pace_second) + int(pace_minisecond)/100 #配速
             pace_km = float(pace_lap)*2.5
         except Exception as e:
-            print(e)
+            # print(e)
             string="请输入正确时间！"
             dial=MessageDialog(None,string)
             dial.ShowModal()
@@ -165,7 +165,7 @@ class MyFrame(Frame):
 
         elif flag_distance and flag_pace: #根据距离和配速计算时间和圈速
             time_tmp = time_pace*float(distance)
-            print(time_tmp)
+            # print(time_tmp)
             hour_tmp = int(time_tmp/3600)
             minute_tmp = int((time_tmp-hour_tmp*3600)/60)
             second_tmp = int((time_tmp-hour_tmp*3600-minute_tmp*60)%60)
